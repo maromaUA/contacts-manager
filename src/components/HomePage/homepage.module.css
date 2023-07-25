@@ -27,6 +27,10 @@ h2 {
 .liActions {
   display: flex;
   flex-direction: column;
+  gap: 1em;
+}
+.liActions li:hover {
+  transform: scale(1.2);
 }
 .contact {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);

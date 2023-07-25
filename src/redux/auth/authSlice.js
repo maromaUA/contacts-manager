@@ -4,6 +4,7 @@ import {
   logInOperation,
   logOutOperation,
   refreshUserOperation,
+  changeSettingsOperation,
 } from './operations';
 
 const initialState = {
@@ -19,7 +20,7 @@ const authSlice = createSlice({
   extraReducers: {
     [registerOperation.fulfilled](state, action) {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      // state.token = action.payload.token;
       state.isLoggedIn = true;
     },
     [logInOperation.fulfilled](state, action) {
@@ -42,6 +43,14 @@ const authSlice = createSlice({
     },
     [refreshUserOperation.rejected](state) {
       state.isRefreshing = false;
+    },
+
+    [changeSettingsOperation.fulfilled]: (state, { payload }) => {
+      const keys = Object.keys(payload);
+      const values = Object.values(payload);
+      keys.forEach((key, index) => {
+        state.user[key] = values[index];
+      });
     },
   },
 });

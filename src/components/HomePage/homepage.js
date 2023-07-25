@@ -4,11 +4,14 @@ import {
   getContactsOperation,
   postContactOperation,
   changeFavoriteOperation,
+  deleteContactOperation,
+  updateContactOperation,
 } from '../../redux/contacts/operations';
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { getContacts } from '../../redux/contacts/selectors';
 import { FaHeart, FaPen, FaTrash } from 'react-icons/fa6';
+import throttle from 'lodash.throttle';
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -51,19 +54,83 @@ const Homepage = () => {
     dispatch(postContactOperation(contact));
   }
 
-  function onFavoriteHandler(id, favorite) {
-    // const index = contactsArr.findIndex(contact => contact._id === id);
-    // contactsArr[index].favorite = !favorite;
+  async function onFavoriteHandler(id, favorite) {
     const body = { favorite: !favorite };
     console.log(body);
-    dispatch(changeFavoriteOperation({ id, body }));
+    const result = await dispatch(changeFavoriteOperation({ id, body }));
+    console.log(result);
+  }
+  async function onDeleteHandler(id) {
+    const result = await dispatch(deleteContactOperation(id));
+    console.log(result);
+  }
+
+  async function editNameHandler(e, email, phone, favorite, id) {
+    console.log(e);
+    const body = {
+      name: e.currentTarget.textContent,
+      email,
+      phone,
+      favorite,
+    };
+    const result = await dispatch(updateContactOperation({ id, body }));
+    console.log('result:', result);
+    if (result.meta.requestStatus === 'rejected') {
+      alert('wrong name');
+    }
+  }
+
+  function editEmailHandler(e, name, phone, favorite, id) {
+    const body = {
+      email: e.currentTarget.textContent,
+      name,
+      phone,
+      favorite,
+    };
+    dispatch(updateContactOperation({ id, body }));
+  }
+
+  function editPhoneHandler(e, name, email, favorite, id) {
+    const body = {
+      phone: e.currentTarget.textContent,
+      name,
+      email,
+      favorite,
+    };
+    dispatch(updateContactOperation({ id, body }));
+    console.log(e);
   }
 
   const result = contacts.map(({ _id, name, email, phone, favorite }) => (
     <li key={_id} className={css.contact}>
       <div className={css.liContent}>
-        <p>Name: {name}</p> <p>Email: {email}</p>
-        <p>Phone: {phone}</p>
+        <p>
+          Name:
+          <span
+            contentEditable="true"
+            onInput={e => editNameHandler(e, email, phone, favorite, _id)}
+          >
+            {name}
+          </span>
+        </p>
+        <p>
+          Email:
+          <span
+            contentEditable="true"
+            onInput={e => editEmailHandler(e, name, phone, favorite, _id)}
+          >
+            {email}
+          </span>
+        </p>
+        <p>
+          Phone:
+          <span
+            contentEditable="true"
+            onInput={e => editPhoneHandler(e, name, email, favorite, _id)}
+          >
+            {phone}
+          </span>
+        </p>
       </div>
       <ul className={css.liActions}>
         <li onClick={() => onFavoriteHandler(_id, favorite)}>
@@ -73,10 +140,7 @@ const Homepage = () => {
             size="25px"
           />
         </li>
-        <li>
-          <FaPen size="25px" />
-        </li>
-        <li>
+        <li onClick={() => onDeleteHandler(_id)}>
           <FaTrash size="25px" />
         </li>
       </ul>

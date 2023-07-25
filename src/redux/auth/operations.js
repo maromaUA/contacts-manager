@@ -105,8 +105,8 @@ export const refreshUserOperation = createAsyncThunk(
   }
 );
 
-export const changeAvatarOperation = createAsyncThunk(
-  'auth/avatar',
+export const changeSettingsOperation = createAsyncThunk(
+  'auth/settings',
   async (data, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -119,7 +119,8 @@ export const changeAvatarOperation = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      const res = await axios.patch('/users/avatars', data);
+      // const res = await axios.patch('/users/avatars', data);
+      const res = await axios.put('/users/settings', data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

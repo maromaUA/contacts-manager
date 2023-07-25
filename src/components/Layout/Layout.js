@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/selectors';
 import {
   logOutOperation,
-  changeAvatarOperation,
+  changeSettingsOperation,
 } from '../../redux/auth/operations';
 import css from './Layout.module.css';
 import { FaGear } from 'react-icons/fa6';
@@ -18,7 +18,7 @@ const Layout = () => {
   const { email, subscription, avatarURL, name } = user;
   const { REACT_APP_BACKEND_URL } = process.env;
 
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState(null);
   const [open, setOpen] = useState(false);
 
   const onOpenModal = () => setOpen(true);
@@ -32,11 +32,11 @@ const Layout = () => {
     console.log(e.target.files[0]);
   };
 
-  const handleUpload = () => {
-    const formData = new FormData();
-    formData.append('avatar', avatar);
-    console.log(formData);
-    dispatch(changeAvatarOperation(formData));
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const result = await dispatch(changeSettingsOperation(data));
+    console.log(result);
   };
 
   return email ? (
@@ -50,24 +50,29 @@ const Layout = () => {
           modal: css.customModal,
         }}
       >
-        <form className={css.formSettings}>
+        <form className={css.formSettings} onSubmit={handleSubmit}>
           <h2>Settings</h2>
           <input type="text" name="name" placeholder="Name" />
           <div className={css.radioBox}>
-            <label class="form-control">
-              <input type="radio" name="radio" />
+            <label className="form-control">
+              <input type="radio" name="subscription" value="starter" />
               Starter
             </label>
-            <label class="form-control">
-              <input type="radio" name="radio" />
+            <label className="form-control">
+              <input type="radio" name="subscription" value="pro" />
               Pro
             </label>
-            <label class="form-control">
-              <input type="radio" name="radio" />
+            <label className="form-control">
+              <input type="radio" name="subscription" value="business" />
               Business
             </label>
           </div>
-          <input type="password" name="password" placeholder="Password" />
+          <input
+            type="file"
+            onChange={handleAvatarChange}
+            accept="image/*"
+            name="avatar"
+          ></input>
           <button className={css.formButton} type="submit">
             Save
           </button>
@@ -84,12 +89,7 @@ const Layout = () => {
             }
             alt="avatar"
           ></img>
-          {/* <input
-            type="file"
-            onChange={handleAvatarChange}
-            accept="image/*"
-            name="avatar"
-          ></input>
+          {/*
           <button type="button" onClick={handleUpload}>
             Upload
           </button> */}

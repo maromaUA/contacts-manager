@@ -14,8 +14,8 @@ export const deleteContact = id => {
   return axios.delete(`${CONTACTS_URL}/${id}`);
 };
 
-export const changeContact = id => {
-  return axios.put(`${CONTACTS_URL}/${id}`);
+export const changeContact = (id, body) => {
+  return axios.put(`${CONTACTS_URL}/${id}`, body);
 };
 
 export const changeFavorite = (id, body) => {
