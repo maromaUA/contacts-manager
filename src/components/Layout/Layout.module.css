@@ -1,0 +1,40 @@
+.wrapper {
+  position: relative;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.header li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em;
+}
+.header li:nth-child(2) {
+  flex-basis: 70%;
+}
+.avatar {
+  border-radius: 50%;
+  width: 50px;
+}
+.customModal {
+  background: #b2dbbf;
+  max-width: 500px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.formSettings {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+  font-size: 1.2rem;
+}
+.formSettings input {
+}

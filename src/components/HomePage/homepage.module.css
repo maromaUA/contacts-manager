@@ -1,0 +1,70 @@
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  background: var(--main-bg-color);
+  text-align: center;
+}
+h2 {
+  color: white;
+  font-size: 2rem;
+}
+
+.listContacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.liContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: flex-start;
+}
+
+.liActions {
+  display: flex;
+  flex-direction: column;
+}
+.contact {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
+  background-color: white;
+  font-size: 1.2rem;
+  color: black;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  padding: 1em 0.5em;
+  justify-content: space-between;
+}
+
+.addButton {
+  background-color: white;
+  color: #92b0ec;
+  padding: 1em 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  border: 1px solid grey;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.formModal input {
+  width: 80%;
+}
+.formButton {
+  width: 60%;
+  font-size: 1.1rem;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background: var(--main-bg-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
