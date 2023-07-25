@@ -12,12 +12,10 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/contacts-manager">
           <App />
         </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>
 );
-
-
