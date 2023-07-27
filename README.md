@@ -1,70 +1,45 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Contact manager full-stack project
 
-## Available Scripts
+## Try it out!
 
-In the project directory, you can run:
+- **Front-end**: Check out the live demo of the front-end
+  [**here**](https://maromaua.github.io/contacts-manager/#)
+- **Back-end base** URL: Access the back-end API using the base URL
+  [**here**](https://backend-practice-zs48.onrender.com)
+- **Back-end GitHub Repo**: Explore the back-end source code in the GitHub
+  [**repository**](https://github.com/maromaUA/backend_practice)
 
-### `npm start`
+## Technologies used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Front-end**:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ReactJS
+- Redux
+- CSS modules **Back-End**:
+- NodeJS
+- Express
+- MongoDB
 
-### `npm test`
+### Description
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This application was created for educational purposes, serving as a practical
+example of a full-stack project. The primary objective was to gain a
+comprehensive understanding of the development process, from front-end to
+back-end, and overcome various challenges encountered along the way.
 
-### `npm run build`
+#### Key features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Authentication: Implemented user authentication using JWT for secure access to
+  the application.
+- Confirmation Email: Utilized SendGrid to send confirmation emails for enhanced
+  user account verification.
+- Contact Management: Users can effortlessly add and delete their contacts
+  through the application.
+- User Settings: The application allows users to customize their profiles,
+  including their avatar image, name, and subscription type.
+- State Management: Crucial information is efficiently stored in Redux, ensuring
+  smooth data flow and state management.
+- Async API Calls: API calls are effectively handled using asyncThunk,
+  simplifying asynchronous operations.
