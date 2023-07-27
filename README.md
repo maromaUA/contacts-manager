@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-Contact manager full-stack project
+# Contact manager full-stack project
 
 ## Try it out!
 
