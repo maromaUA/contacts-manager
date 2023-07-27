@@ -11,11 +11,13 @@ import { FaGear } from 'react-icons/fa6';
 import { BsDoorOpenFill } from 'react-icons/bs';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import { FaFolderOpen } from 'react-icons/fa';
 
 const Layout = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const { email, subscription, avatarURL, name } = user;
+
   const { REACT_APP_BACKEND_URL } = process.env;
 
   const [avatar, setAvatar] = useState(null);
@@ -40,44 +42,60 @@ const Layout = () => {
   };
 
   return email ? (
-    <div className={css.wrapper}>
+    <div classNameName={css.wrapper}>
       <Modal
         open={open}
         onClose={onCloseModal}
         center
-        classNames={{
+        classNameNames={{
           overlay: css.customOverlay,
           modal: css.customModal,
         }}
       >
         <form className={css.formSettings} onSubmit={handleSubmit}>
           <h2>Settings</h2>
-          <input type="text" name="name" placeholder="Name" />
-          <div className={css.radioBox}>
+
+          <label>
+            <span className={css.inputDesc}>Name</span>
+            <input
+              className={css.modalInput}
+              type="text"
+              name="name"
+              placeholder="Name"
+              defaultValue={name}
+            />
+          </label>
+          <label className={css.inputFile}>
+            <FaFolderOpen size="30px" color="#92b0ec" />{' '}
+            <span>Change avatar</span>
+            <input
+              type="file"
+              onChange={handleAvatarChange}
+              accept="image/*"
+              name="avatar"
+              className={css.hiddenInput}
+            ></input>
+          </label>
+          <div className={css.radioStart}>
             <label className="form-control">
               <input type="radio" name="subscription" value="starter" />
               Starter
             </label>
-            <label className="form-control">
+            <label className={css.radioPro}>
               <input type="radio" name="subscription" value="pro" />
               Pro
             </label>
-            <label className="form-control">
+            <label className={css.radioBusiness}>
               <input type="radio" name="subscription" value="business" />
               Business
             </label>
           </div>
-          <input
-            type="file"
-            onChange={handleAvatarChange}
-            accept="image/*"
-            name="avatar"
-          ></input>
           <button className={css.formButton} type="submit">
             Save
           </button>
         </form>
       </Modal>
+
       <ul className={css.header}>
         <li>
           <img
@@ -89,21 +107,33 @@ const Layout = () => {
             }
             alt="avatar"
           ></img>
-          {/*
-          <button type="button" onClick={handleUpload}>
-            Upload
-          </button> */}
         </li>
-        <li>
-          <p>{name}</p>
-          <p>{subscription}</p>
-        </li>
+        {/*
+            <button type="button" onClick={handleUpload}>
+              Upload
+            </button> */}
 
-        <li onClick={onOpenModal}>
-          <FaGear color="#92b0ec" size="30px" />
+        <li className={css.userInfo}>
+          <p className={css.headerName}>{name}</p>
+          <p
+            style={{
+              color:
+                (subscription === 'starter' && 'green') ||
+                (subscription === 'pro' && 'blue') ||
+                (subscription === 'business' && 'red'),
+              fontWeight: 500,
+            }}
+          >
+            {subscription.toUpperCase()}
+          </p>
         </li>
-        <li onClick={onLogoutHandler}>
-          <BsDoorOpenFill color="#92b0ec" size="30px" />
+        <li className={css.headerActions}>
+          <span onClick={onOpenModal}>
+            <FaGear color="#92b0ec" size="30px" />
+          </span>
+          <span onClick={onLogoutHandler}>
+            <BsDoorOpenFill color="#92b0ec" size="30px" />
+          </span>
         </li>
       </ul>
       <Suspense>

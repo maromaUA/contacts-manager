@@ -10,6 +10,7 @@ import useAuth from './hooks/useAuth';
 import { refreshUserOperation } from '../redux/auth/operations';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
+import ConfirmEmailPage from './ConfirmEmailPage/ConfirmEmailPage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const App = () => {
           path="/contacts"
           element={<PrivateRoute redirectTo="/" component={<Homepage />} />}
         ></Route>
+        <Route path="/confirm" element={<ConfirmEmailPage />}></Route>
         <Route path="*" element={<Navigate to={'/'} />} />
       </Route>
     </Routes>

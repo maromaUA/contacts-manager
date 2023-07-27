@@ -30,7 +30,7 @@ export const registerOperation = createAsyncThunk(
   }
 );
 
-export const verifyEmail = createAsyncThunk(
+export const verifyEmailOperation = createAsyncThunk(
   'auth/verify',
   async (email, thunkAPI) => {
     try {

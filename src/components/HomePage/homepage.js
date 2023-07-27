@@ -8,40 +8,22 @@ import {
   updateContactOperation,
 } from '../../redux/contacts/operations';
 import { useEffect, useState } from 'react';
-import Modal from 'react-modal';
+import { Modal } from 'react-responsive-modal';
 import { getContacts } from '../../redux/contacts/selectors';
 import { FaHeart, FaPen, FaTrash } from 'react-icons/fa6';
 import throttle from 'lodash.throttle';
 
 const Homepage = () => {
   const dispatch = useDispatch();
-  const [modalIsOpen, setIsOpen] = useState(false);
   const contacts = useSelector(getContacts);
+  const [open, setOpen] = useState(false);
 
-  Modal.setAppElement('#root');
-
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
 
   useEffect(() => {
     dispatch(getContactsOperation());
   }, [dispatch]);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   function onFormSubmit(e) {
     e.preventDefault();
@@ -52,6 +34,7 @@ const Homepage = () => {
     const contact = { name, email, phone };
     console.log(contact);
     dispatch(postContactOperation(contact));
+    onCloseModal();
   }
 
   async function onFavoriteHandler(id, favorite) {
@@ -149,10 +132,53 @@ const Homepage = () => {
 
   return (
     <div className={css.wrapper}>
-      <button className={css.addButton} type="button" onClick={openModal}>
+      <button className={css.addButton} type="button" onClick={onOpenModal}>
         Add Contact
       </button>
       <Modal
+        open={open}
+        onClose={onCloseModal}
+        center
+        classNameNames={{
+          overlay: css.customOverlay,
+          modal: css.customModal,
+        }}
+      >
+        <form className={css.formModal} onSubmit={onFormSubmit}>
+          <h2>Add contact</h2>
+          <label className={css.inputDesc}>
+            Name
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter name"
+              className={css.modalInput}
+            />
+          </label>
+          <label className={css.inputDesc}>
+            Email
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              className={css.modalInput}
+            />
+          </label>
+          <label className={css.inputDesc}>
+            Phone
+            <input
+              type="phone"
+              name="phone"
+              placeholder="Enter phone"
+              className={css.modalInput}
+            />
+          </label>
+          <button className={css.formButton} type="submit">
+            Add
+          </button>
+        </form>
+      </Modal>
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
@@ -168,7 +194,7 @@ const Homepage = () => {
             Add
           </button>
         </form>
-      </Modal>
+      </Modal> */}
       <h2>List of contacts</h2>
       <ul className={css.listContacts}>{result}</ul>
     </div>
