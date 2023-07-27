@@ -6,7 +6,8 @@
   [**here**](https://maromaua.github.io/contacts-manager/#)
 - **Back-end base** URL: Access the back-end API using the base URL
   [**here**](https://backend-practice-zs48.onrender.com)
-- **Back-end GitHub Repo**: Explore the back-end source code in the GitHub
+- **Back-end GitHub Repo**: Explore the back-end source code and documentation
+  for API in the GitHub
   [**repository**](https://github.com/maromaUA/backend_practice)
 
 ## Technologies used
