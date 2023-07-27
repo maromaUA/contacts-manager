@@ -15,7 +15,10 @@
 
 - ReactJS
 - Redux
-- CSS modules **Back-End**:
+- CSS modules
+
+**Back-End**:
+
 - NodeJS
 - Express
 - MongoDB
