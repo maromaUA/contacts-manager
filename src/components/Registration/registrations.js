@@ -3,11 +3,27 @@ import {
   registerOperation,
   verifyEmailOperation,
 } from '../../redux/auth/operations';
-import css from './registration.module.css';
+import css from './registration.module.scss';
 import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
+import * as Yup from 'yup';
+import { Formik, Form, Field } from 'formik';
+import Input from '../../shared/components/input/input';
+import Button from '../../shared/components/button/button';
+import FormMessage from '../../shared/components/FormMessage/FormMessage';
+
+const RegistrSchema = Yup.object().shape({
+  name: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email').required('Required'),
+  password: Yup.string()
+    .min(6, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  confirmPass: Yup.string()
+    .oneOf([Yup.ref('password'), null], "Passwords don't match")
+    .required('Required'),
+});
 
 const Registration = () => {
   const dispatch = useDispatch();
@@ -18,21 +34,15 @@ const Registration = () => {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
-  const {
-    register,
-    watch,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
+  const onFormSubmit = async (credentials, { resetForm }) => {
+    const { email, password, name } = credentials;
 
-  const onFormSubmit = async ({ name, email, password }) => {
-    const credentials = { name, email, password };
-
-    const result = await dispatch(registerOperation(credentials));
+    const result = await dispatch(registerOperation({ email, password, name }));
     if (result.error) {
       setInfo('red');
     }
     setInfo('green');
+    resetForm();
   };
   const onModalSumbit = e => {
     e.preventDefault();
@@ -53,112 +63,97 @@ const Registration = () => {
           modal: css.customModal,
         }}
       >
-        <form className={css.modalRegister} onSubmit={onModalSumbit}>
-          <label className={css.inputDesc}>
-            <span>Email</span>
-            <input
-              className={css.inputForm}
-              type="email"
-              placeholder="Enter email"
-              name="confirm"
-            />
-            <p className={css.inputError}>
-              {errors?.email && errors.email.message}
-            </p>
-          </label>
-          <button className={css.formButton} type="submit">
-            Send
-          </button>
-        </form>
-      </Modal>
-      <form className={css.formRegister} onSubmit={handleSubmit(onFormSubmit)}>
-        <h2>Sign Up</h2>
-        <label className={css.inputDesc}>
-          <span>Name</span>
-          <input
-            className={css.inputForm}
-            type="text"
-            placeholder="Enter name"
-            {...register('name', {
-              required: 'Name is required',
-            })}
-          />
-
-          <p className={css.inputError}>
-            {errors?.name && errors.name.message}
-          </p>
-        </label>
-        <label className={css.inputDesc}>
-          <span>Email</span>
-          <input
-            className={css.inputForm}
+        <Form className={css.form}>
+          <h3>Sign Up</h3>
+          <Input
+            label="Email"
             type="email"
             placeholder="Enter email"
-            {...register('email', {
-              required: 'Email is required',
-              minLength: {
-                value: 6,
-                message: 'minimum length 6 characters',
-              },
-            })}
+            name="confirm"
           />
-          <p className={css.inputError}>
-            {errors?.email && errors.email.message}
-          </p>
-        </label>
-        <label className={css.inputDesc}>
-          <span>Password</span>
-          <input
-            className={css.inputForm}
-            type="password"
-            placeholder="Enter password"
-            {...register('password', { required: 'Password is required' })}
-          />
-          <p className={css.inputError}>
-            {errors?.password && errors.password.message}
-          </p>
-        </label>
-        <label className={css.inputDesc}>
-          <span>Confirm password</span>
-          <input
-            className={css.inputForm}
-            type="password"
-            placeholder="Confirm password"
-            {...register('confirmPass', {
-              required: 'Confirm password is required',
-              validate: val => {
-                if (watch('password') !== val) {
-                  return "Passwords don't match";
-                }
-              },
-            })}
-          />
-          <p className={css.inputError}>
-            {errors?.confirmPass && errors.confirmPass.message}
-          </p>
-        </label>
-        {info === 'red' && (
-          <p className={css.inputError}>This email is already used</p>
+
+          <p className={css.inputError}></p>
+
+          <Button text="Send" />
+        </Form>
+      </Modal>
+
+      <Formik
+        initialValues={{
+          name: '',
+          email: '',
+          password: '',
+          confirmPass: '',
+        }}
+        validationSchema={RegistrSchema}
+        onSubmit={onFormSubmit}
+      >
+        {({ errors, touched, handleChange }) => (
+          <Form className={css.form}>
+            <h3>Sing Up</h3>
+            <Input
+              label="Name"
+              name="name"
+              type="text"
+              placeholder="Enter name"
+              height="30px"
+              onChange={handleChange}
+            />
+
+            <Input
+              label="Email"
+              name="email"
+              type="email"
+              placeholder="Enter email"
+              height="30px"
+              onChange={handleChange}
+            />
+
+            <Input
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Enter password"
+              height="30px"
+              onChange={handleChange}
+            />
+
+            <Input
+              label="Confirm password"
+              name="confirmPass"
+              type="password"
+              placeholder="Repeat password"
+              height="30px"
+              onChange={handleChange}
+            />
+
+            {info === 'red' && (
+              <FormMessage>This email is already used</FormMessage>
+            )}
+            {info === 'green' && (
+              <FormMessage type="ok">
+                {' '}
+                Check your email and confirm it
+              </FormMessage>
+            )}
+            <button className={css.formButton} type="submit">
+              Register
+            </button>
+            <p>
+              Already have an account ?{' '}
+              <Link className={css.formLink} to="/">
+                Sing in
+              </Link>
+            </p>
+            <p>
+              <span onClick={onOpenModal} className={css.formLink}>
+                Send
+              </span>{' '}
+              me confirm message again
+            </p>
+          </Form>
         )}
-        {info === 'green' && (
-          <p className={css.inputSuccess}>Check your email and confirm it</p>
-        )}
-        <button className={css.formButton} type="submit">
-          Register
-        </button>
-        <p>
-          Already have an account ?{' '}
-          <Link className={css.formLink} to="/">
-            Sing in
-          </Link>
-        </p>
-        <p>
-          <span onClick={onOpenModal} className={css.formLink}>
-            Send
-          </span>{' '}
-          me confirm message again
-        </p>
-      </form>
+      </Formik>
     </div>
   );
 };

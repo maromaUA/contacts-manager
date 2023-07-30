@@ -196,6 +196,7 @@ const Homepage = () => {
         </form>
       </Modal> */}
       <h2>List of contacts</h2>
+
       <ul className={css.listContacts}>{result}</ul>
     </div>
   );
