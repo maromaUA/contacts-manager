@@ -1,13 +1,19 @@
 {
   "files": {
-    "main.css": "/contacts-manager/static/css/main.f0f4f89d.css",
-    "main.js": "/contacts-manager/static/js/main.87210c38.js",
+    "main.css": "/contacts-manager/static/css/main.de4ffbfa.css",
+    "main.js": "/contacts-manager/static/js/main.c6653473.js",
+    "static/media/Poppins-Regular.woff": "/contacts-manager/static/media/Poppins-Regular.eb7f33fefaf7106ac3a0.woff",
+    "static/media/Poppins-Medium.woff": "/contacts-manager/static/media/Poppins-Medium.9de653bb3161fcb43443.woff",
+    "static/media/Poppins-SemiBold.woff": "/contacts-manager/static/media/Poppins-SemiBold.4b2ae28bc415edfe9fd6.woff",
+    "static/media/Poppins-Regular.woff2": "/contacts-manager/static/media/Poppins-Regular.037e68504b90f9cba901.woff2",
+    "static/media/Poppins-Medium.woff2": "/contacts-manager/static/media/Poppins-Medium.1bb2cc2b927e6590391c.woff2",
+    "static/media/Poppins-SemiBold.woff2": "/contacts-manager/static/media/Poppins-SemiBold.e4258fa809f81555ab07.woff2",
     "index.html": "/contacts-manager/index.html",
-    "main.f0f4f89d.css.map": "/contacts-manager/static/css/main.f0f4f89d.css.map",
-    "main.87210c38.js.map": "/contacts-manager/static/js/main.87210c38.js.map"
+    "main.de4ffbfa.css.map": "/contacts-manager/static/css/main.de4ffbfa.css.map",
+    "main.c6653473.js.map": "/contacts-manager/static/js/main.c6653473.js.map"
   },
   "entrypoints": [
-    "static/css/main.f0f4f89d.css",
-    "static/js/main.87210c38.js"
+    "static/css/main.de4ffbfa.css",
+    "static/js/main.c6653473.js"
   ]
 }
