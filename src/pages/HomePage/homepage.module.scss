@@ -1,8 +1,8 @@
 .wrapper {
-  height: 100vh;
   width: 100vw;
   background: var(--main-bg-color);
   text-align: center;
+  padding: 2em 2em;
 }
 .modalWrapper {
   position: relative;
@@ -18,13 +18,27 @@ h2 {
   align-items: center;
   gap: 1em;
   margin-top: 1em;
+  @media screen and (min-width: 765px) {
+    width: 70%;
+    margin: 1.5em auto;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 40%;
+    margin: 1.5em auto;
+  }
 }
 
 .liContent {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 1em;
   align-items: flex-start;
+  @media screen and (min-width: 768px) {
+    width: 70%;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 60%;
+  }
 }
 
 .liActions {
@@ -39,18 +53,23 @@ h2 {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   border-radius: 5px;
   background-color: var(--card-bg-color);
-  font-size: 1.2rem;
-  color: var(--card-input-color);
+  font-size: 1rem;
+  color: var(--card-text-color);
   width: 90%;
   display: flex;
   flex-direction: row;
-  padding: 1em 0.5em;
+  padding: 1em 1em;
   justify-content: space-between;
+  align-items: center;
+  @media screen and (min-width: 765px) {
+    padding: 1.5em 1.5em;
+    font-size: 1.2rem;
+  }
 }
 
 .addButton {
-  background-color: var(--add-button-bg-color);
-  color: var(--add-button-text-color);
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
   padding: 1em 0.5em;
   text-align: center;
   font-size: 1.1rem;
@@ -59,22 +78,3 @@ h2 {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   margin: 1em auto;
 }
-
-@media screen and (min-width: 768px) {
-  .listContacts {
-    width: 50%;
-    margin: 1.5em auto;
-  }
-}
-
-// @media screen and (min-width: 1000px) {
-//   .formLogin {
-//     width: 30%;
-//   }
-//   .formLogin h2 {
-//     font-size: 2.5rem;
-//   }
-//   .formLogin input {
-//     font-size: 1.2rem;
-//   }
-// }

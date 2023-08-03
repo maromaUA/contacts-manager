@@ -13,7 +13,7 @@ import Input from '../../shared/components/input/input';
 import Button from '../../shared/components/button/button';
 import FormMessage from '../../shared/components/FormMessage/FormMessage';
 import Modal from '../../shared/components/modal/Modal';
-import ResendEmail from '../ResendEmail/ResendEmail';
+import ResendEmail from '../../components/FormModals/ResendEmailForm/ResendEmail';
 
 const RegistrSchema = Yup.object().shape({
   name: Yup.string().required('Required'),

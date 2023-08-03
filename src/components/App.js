@@ -1,16 +1,18 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Login from './Login/login';
-import Registration from './Registration/registrations';
-import Homepage from './HomePage/homepage';
+
 import Layout from './Layout/Layout';
 import { useDispatch } from 'react-redux';
-import useAuth from './hooks/useAuth';
+import useAuth from '../shared/hooks/useAuth';
 import { refreshUserOperation } from '../redux/auth/operations';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
-import ConfirmPage from './pages/confirmPage';
+
+const Homepage = lazy(() => import('../pages/HomePage/homepage'));
+const Registration = lazy(() => import('../pages/Registration/registration'));
+const Login = lazy(() => import('../pages/Login/login'));
+const ConfirmPage = lazy(() => import('../pages/ConfirmPage/confirmPage'));
 
 const App = () => {
   const dispatch = useDispatch();

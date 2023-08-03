@@ -25,7 +25,8 @@
 }
 #wrapper[data-theme='light'] {
   --main-bg-color: linear-gradient(#92b0ec, #567995);
-  --layout-bg-color: white;
+  --header-bg-color: white;
+  --header-text-color: black;
   --input-text-color: black;
   --input-border-color: gray;
   --input-placeholder-color-main: rgba(3, 3, 3, 0.3);
@@ -41,6 +42,8 @@
 
 #wrapper[data-theme='dark'] {
   --main-bg-color: #1d2226;
+  --header-bg-color: black;
+  --header-text-color: white;
   --layout-bg-color: #1d2226;
   --layout-border-color: white;
   --input-text-color: white;

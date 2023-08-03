@@ -8,33 +8,46 @@ import {
 } from '../../redux/contacts/operations';
 import { useEffect, useState } from 'react';
 import { getContacts } from '../../redux/contacts/selectors';
-import { FaHeart, FaTrash } from 'react-icons/fa6';
+import { FaHeart, FaTrash, FaPen } from 'react-icons/fa6';
 
 import Modal from '../../shared/components/modal/Modal';
-import AddContactForm from '../FormModals/AddContactForm';
+import AddContactForm from '../../components/FormModals/AddContactForm/AddContactForm';
 
 const Homepage = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const [open, setOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [editInitialValues, setEditInitialValues] = useState({});
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+
+  const onEditOpen = () => setOpenEdit(true);
+  const onEditClose = () => setOpenEdit(false);
+
+  const onEditHandler = (name = '', email = '', phone = '') => {
+    setEditInitialValues(editInitialValues => ({
+      ...editInitialValues,
+      name,
+      email,
+      phone,
+    }));
+    onEditOpen();
+  };
 
   useEffect(() => {
     dispatch(getContactsOperation());
   }, [dispatch]);
 
-  async function onFavoriteHandler(id, favorite) {
+  const onFavoriteHandler = (id, favorite) => {
     const body = { favorite: !favorite };
-    console.log(body);
-    const result = await dispatch(changeFavoriteOperation({ id, body }));
-    console.log(result);
-  }
-  async function onDeleteHandler(id) {
-    const result = await dispatch(deleteContactOperation(id));
-    console.log(result);
-  }
+
+    dispatch(changeFavoriteOperation({ id, body }));
+  };
+  const onDeleteHandler = id => {
+    dispatch(deleteContactOperation(id));
+  };
 
   async function editNameHandler(e, email, phone, favorite, id) {
     console.log(e);
@@ -76,7 +89,7 @@ const Homepage = () => {
     <li key={_id} className={css.contact}>
       <div className={css.liContent}>
         <p>
-          Name:
+          Name:{' '}
           <span
             contentEditable="true"
             onInput={e => editNameHandler(e, email, phone, favorite, _id)}
@@ -85,7 +98,7 @@ const Homepage = () => {
           </span>
         </p>
         <p>
-          Email:
+          Email:{' '}
           <span
             contentEditable="true"
             onInput={e => editEmailHandler(e, name, phone, favorite, _id)}
@@ -94,7 +107,7 @@ const Homepage = () => {
           </span>
         </p>
         <p>
-          Phone:
+          Phone:{' '}
           <span
             contentEditable="true"
             onInput={e => editPhoneHandler(e, name, email, favorite, _id)}
@@ -111,6 +124,9 @@ const Homepage = () => {
             size="25px"
           />
         </li>
+        <li onClick={() => onEditHandler(name, email, phone)}>
+          <FaPen size="25px" />
+        </li>
         <li onClick={() => onDeleteHandler(_id)}>
           <FaTrash size="25px" />
         </li>
@@ -123,6 +139,14 @@ const Homepage = () => {
       {open && (
         <Modal onClose={onCloseModal}>
           <AddContactForm />
+        </Modal>
+      )}
+      {openEdit && (
+        <Modal onClose={onEditClose}>
+          <AddContactForm
+            title="Edit contact"
+            initialValues={editInitialValues}
+          />
         </Modal>
       )}
       <div className={css.wrapper}>

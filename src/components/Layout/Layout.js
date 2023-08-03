@@ -12,7 +12,7 @@ import { BsDoorOpenFill } from 'react-icons/bs';
 
 import Modal from '../../shared/components/modal/Modal';
 import ThemeSwitch from '../../shared/components/ThemeSwitch/ThemeSwitch';
-import SettingsForm from '../FormModals/SettingsForm';
+import SettingsForm from '../FormModals/SettingsForm/SettingsForm';
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -37,11 +37,7 @@ const Layout = () => {
   };
 
   return email ? (
-    <div
-      id="wrapper"
-      className={theme === 'light' ? css.wrapper : css.wrapperDark}
-      data-theme={theme}
-    >
+    <div id="wrapper" className={css.wrapper} data-theme={theme}>
       {open && (
         <Modal onClose={onCloseModal}>
           <SettingsForm />

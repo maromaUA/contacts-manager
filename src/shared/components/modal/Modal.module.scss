@@ -16,13 +16,14 @@
   position: relative;
   font-size: 2rem;
   @media screen and (min-width: 750px) {
-    width: 60%;
+    width: 50%;
   }
   @media screen and (min-width: 1000px) {
     width: 25%;
   }
 }
 .close {
+  color: var(--input-text-color);
   position: absolute;
   cursor: pointer;
   top: 3%;

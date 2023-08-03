@@ -1,20 +1,18 @@
-import { useState } from 'react';
 import css from './SettingsForm.module.scss';
 import { useDispatch } from 'react-redux';
-import { changeSettingsOperation } from '../../redux/auth/operations';
+import { changeSettingsOperation } from '../../../redux/auth/operations';
 import { FaFolderOpen } from 'react-icons/fa';
-import RadioButtons from '../../shared/components/radioButtons/radioButtons';
+import RadioButtons from '../../../shared/components/radioButtons/radioButtons';
 
 const SettingsForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    console.log('event:', e.target);
+
     const data = new FormData(e.target);
-    console.log(data);
-    const result = await dispatch(changeSettingsOperation(data));
-    console.log(result);
+
+    dispatch(changeSettingsOperation(data));
   };
   return (
     <form className={css.formSettings} onSubmit={handleSubmit}>
