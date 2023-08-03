@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/contacts-manager/static/css/main.152607f6.css",
-    "main.js": "/contacts-manager/static/js/main.47255529.js",
+    "main.js": "/contacts-manager/static/js/main.d9bab323.js",
     "static/css/550.cd4f64ee.chunk.css": "/contacts-manager/static/css/550.cd4f64ee.chunk.css",
     "static/js/550.84e29d48.chunk.js": "/contacts-manager/static/js/550.84e29d48.chunk.js",
     "static/css/54.2ea89e64.chunk.css": "/contacts-manager/static/css/54.2ea89e64.chunk.css",
@@ -19,7 +19,7 @@
     "static/media/Poppins-SemiBold.woff2": "/contacts-manager/static/media/Poppins-SemiBold.e4258fa809f81555ab07.woff2",
     "index.html": "/contacts-manager/index.html",
     "main.152607f6.css.map": "/contacts-manager/static/css/main.152607f6.css.map",
-    "main.47255529.js.map": "/contacts-manager/static/js/main.47255529.js.map",
+    "main.d9bab323.js.map": "/contacts-manager/static/js/main.d9bab323.js.map",
     "550.cd4f64ee.chunk.css.map": "/contacts-manager/static/css/550.cd4f64ee.chunk.css.map",
     "550.84e29d48.chunk.js.map": "/contacts-manager/static/js/550.84e29d48.chunk.js.map",
     "54.2ea89e64.chunk.css.map": "/contacts-manager/static/css/54.2ea89e64.chunk.css.map",
@@ -32,6 +32,6 @@
   },
   "entrypoints": [
     "static/css/main.152607f6.css",
-    "static/js/main.47255529.js"
+    "static/js/main.d9bab323.js"
   ]
 }
