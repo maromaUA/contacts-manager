@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/contacts-manager/static/css/main.152607f6.css",
-    "main.js": "/contacts-manager/static/js/main.4cc04d9c.js",
+    "main.js": "/contacts-manager/static/js/main.b8d9c65e.js",
     "static/css/550.cd4f64ee.chunk.css": "/contacts-manager/static/css/550.cd4f64ee.chunk.css",
     "static/js/550.84e29d48.chunk.js": "/contacts-manager/static/js/550.84e29d48.chunk.js",
-    "static/css/54.b08cdb87.chunk.css": "/contacts-manager/static/css/54.b08cdb87.chunk.css",
-    "static/js/54.084ad248.chunk.js": "/contacts-manager/static/js/54.084ad248.chunk.js",
+    "static/css/54.2ea89e64.chunk.css": "/contacts-manager/static/css/54.2ea89e64.chunk.css",
+    "static/js/54.0b158f22.chunk.js": "/contacts-manager/static/js/54.0b158f22.chunk.js",
     "static/css/132.4047b106.chunk.css": "/contacts-manager/static/css/132.4047b106.chunk.css",
     "static/js/132.18a6285b.chunk.js": "/contacts-manager/static/js/132.18a6285b.chunk.js",
     "static/css/539.35a8a960.chunk.css": "/contacts-manager/static/css/539.35a8a960.chunk.css",
@@ -19,11 +19,11 @@
     "static/media/Poppins-SemiBold.woff2": "/contacts-manager/static/media/Poppins-SemiBold.e4258fa809f81555ab07.woff2",
     "index.html": "/contacts-manager/index.html",
     "main.152607f6.css.map": "/contacts-manager/static/css/main.152607f6.css.map",
-    "main.4cc04d9c.js.map": "/contacts-manager/static/js/main.4cc04d9c.js.map",
+    "main.b8d9c65e.js.map": "/contacts-manager/static/js/main.b8d9c65e.js.map",
     "550.cd4f64ee.chunk.css.map": "/contacts-manager/static/css/550.cd4f64ee.chunk.css.map",
     "550.84e29d48.chunk.js.map": "/contacts-manager/static/js/550.84e29d48.chunk.js.map",
-    "54.b08cdb87.chunk.css.map": "/contacts-manager/static/css/54.b08cdb87.chunk.css.map",
-    "54.084ad248.chunk.js.map": "/contacts-manager/static/js/54.084ad248.chunk.js.map",
+    "54.2ea89e64.chunk.css.map": "/contacts-manager/static/css/54.2ea89e64.chunk.css.map",
+    "54.0b158f22.chunk.js.map": "/contacts-manager/static/js/54.0b158f22.chunk.js.map",
     "132.4047b106.chunk.css.map": "/contacts-manager/static/css/132.4047b106.chunk.css.map",
     "132.18a6285b.chunk.js.map": "/contacts-manager/static/js/132.18a6285b.chunk.js.map",
     "539.35a8a960.chunk.css.map": "/contacts-manager/static/css/539.35a8a960.chunk.css.map",
@@ -32,6 +32,6 @@
   },
   "entrypoints": [
     "static/css/main.152607f6.css",
-    "static/js/main.4cc04d9c.js"
+    "static/js/main.b8d9c65e.js"
   ]
 }
