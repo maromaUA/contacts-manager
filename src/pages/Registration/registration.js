@@ -38,9 +38,9 @@ const Registration = () => {
 
     const result = await dispatch(registerOperation({ email, password, name }));
     if (result.error) {
-      setInfo('ok');
+      setInfo('fail');
     }
-    setInfo('fail');
+    setInfo('ok');
     resetForm();
   };
 
