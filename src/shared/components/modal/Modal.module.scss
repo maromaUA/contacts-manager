@@ -1,0 +1,38 @@
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(20, 7, 55, 0.452);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.modal {
+  width: 90%;
+  background-color: var(--modal-bg-color);
+  position: relative;
+  font-size: 2rem;
+  @media screen and (min-width: 750px) {
+    width: 60%;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 25%;
+  }
+}
+.close {
+  position: absolute;
+  cursor: pointer;
+  top: 3%;
+  right: 5%;
+  font-size: 2rem;
+  &::after {
+    display: inline-block;
+    content: '\00d7'; /* This will render the 'X' */
+  }
+  &:hover {
+    opacity: 0.3;
+  }
+}

@@ -6,12 +6,14 @@ import {
 import css from './registration.module.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Modal } from 'react-responsive-modal';
+
 import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 import Input from '../../shared/components/input/input';
 import Button from '../../shared/components/button/button';
 import FormMessage from '../../shared/components/FormMessage/FormMessage';
+import Modal from '../../shared/components/modal/Modal';
+import ResendEmail from '../ResendEmail/ResendEmail';
 
 const RegistrSchema = Yup.object().shape({
   name: Yup.string().required('Required'),
@@ -39,44 +41,29 @@ const Registration = () => {
 
     const result = await dispatch(registerOperation({ email, password, name }));
     if (result.error) {
-      setInfo('red');
+      setInfo('ok');
     }
-    setInfo('green');
+    setInfo('fail');
     resetForm();
   };
-  const onModalSumbit = e => {
-    e.preventDefault();
-    const email = e.currentTarget.confirm.value;
-    dispatch(verifyEmailOperation({ email }));
-    setOpen(false);
-    setInfo('green');
-  };
+  // const onModalSumbit = async email => {
+  //   //const email = e.currentTarget.confirm.value;
+  //   console.log(email);
+  //   const result = await dispatch(verifyEmailOperation(email));
+  //   if (result.error) {
+  //     setInfo('');
+  //   }
+  //   //setOpen(false);
+  //   setInfo('green');
+  // };
 
   return (
     <div className={css.wrapper}>
-      <Modal
-        open={open}
-        onClose={onCloseModal}
-        center
-        classNameNames={{
-          overlay: css.customOverlay,
-          modal: css.customModal,
-        }}
-      >
-        <Form className={css.form}>
-          <h3>Sign Up</h3>
-          <Input
-            label="Email"
-            type="email"
-            placeholder="Enter email"
-            name="confirm"
-          />
-
-          <p className={css.inputError}></p>
-
-          <Button text="Send" />
-        </Form>
-      </Modal>
+      {open && (
+        <Modal onClose={onCloseModal}>
+          <ResendEmail />
+        </Modal>
+      )}
 
       <Formik
         initialValues={{
@@ -127,15 +114,12 @@ const Registration = () => {
               onChange={handleChange}
             />
 
-            {info === 'red' && (
-              <FormMessage>This email is already used</FormMessage>
-            )}
-            {info === 'green' && (
-              <FormMessage type="ok">
-                {' '}
-                Check your email and confirm it
-              </FormMessage>
-            )}
+            <FormMessage type={info}>
+              {info === 'ok'
+                ? 'Check your email and confirm it'
+                : 'This email is already used'}
+            </FormMessage>
+
             <button className={css.formButton} type="submit">
               Register
             </button>

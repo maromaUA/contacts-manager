@@ -1,0 +1,24 @@
+.formAddContact {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  padding: 1em;
+  font-size: 1.2rem;
+  h3 {
+    color: #92b0ec;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+}
+
+.formButton {
+  width: 60%;
+  font-size: 1.1rem;
+  padding: 0.5em 1em;
+  margin: 1em auto;
+  background: #617bb0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}

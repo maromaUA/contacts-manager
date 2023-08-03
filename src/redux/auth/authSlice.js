@@ -5,6 +5,7 @@ import {
   logOutOperation,
   refreshUserOperation,
   changeSettingsOperation,
+  changeThemeOperation,
 } from './operations';
 
 const initialState = {
@@ -49,6 +50,9 @@ const authSlice = createSlice({
       keys.forEach((key, index) => {
         state.user[key] = values[index];
       });
+    },
+    [changeThemeOperation.fulfilled]: (state, { payload }) => {
+      state.user.theme = payload.theme;
     },
   },
 });

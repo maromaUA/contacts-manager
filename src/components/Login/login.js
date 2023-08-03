@@ -23,7 +23,6 @@ const Login = () => {
 
   const onFormSubmit = async (credentials, { resetForm }) => {
     const result = await dispatch(logInOperation(credentials));
-    console.log(credentials);
 
     if (result.error) {
       setError(true);
@@ -42,7 +41,7 @@ const Login = () => {
         validationSchema={LoginSchema}
         onSubmit={onFormSubmit}
       >
-        {({ errors, touched, handleChange }) => (
+        {({ handleChange }) => (
           <Form className={css.form}>
             <h3>Login</h3>
             <Input
@@ -60,31 +59,8 @@ const Login = () => {
               onChange={handleChange}
             />
 
-            {/* <label className={css.inputDesc}>
-            <span>Email</span>
-  
-            <input
-              type="email"
-              placeholder="Email"
-              {...register('email', { required: 'Required field' })}
-            />
-            <p className={css.inputError}>
-              {errors?.email && errors.email.message}
-            </p>
-          </label> */}
-            {/* <label className={css.inputDesc}>
-            <span>Password</span>
-            <input
-              type="password"
-              placeholder="Password"
-              {...register('password', { required: 'Required field' })}
-            />
-            <p className={css.inputError}>
-              {errors?.password && errors.password.message}
-            </p>
-          </label> */}
             {error && <FormMessage>Wrong password or email</FormMessage>}
-            <Button text="Login" />
+            <Button>Login</Button>
             <p>
               Don't have an account ?{' '}
               <Link className={css.formLink} to="/register">

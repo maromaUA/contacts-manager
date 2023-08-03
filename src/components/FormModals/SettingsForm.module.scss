@@ -1,0 +1,85 @@
+.formSettings {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3em;
+  padding: 1em;
+  font-size: 1.2rem;
+  h3 {
+    color: #92b0ec;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  label {
+    margin-bottom: 0.5em;
+    font-size: 0.9rem;
+  }
+}
+.labelName {
+  color: #92b0ec;
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1.2;
+}
+.modalInput {
+  width: 100%;
+  font-size: 1.3rem;
+  border: 1px solid var(--input-border-color);
+  color: var(--input-text-color);
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-top: 0.5em;
+}
+.modalInput::placeholder {
+  font-size: 0.8rem;
+  color: rgba(117, 117, 117, 0.5);
+}
+.inputFile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #92b0ec;
+  &:hover {
+    color: #637cae;
+  }
+}
+
+.inputFile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
+  cursor: pointer;
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 1em 0.5em;
+  font-size: 1rem;
+  font-weight: 400;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.radio {
+  color: #92b0ec;
+}
+
+.hiddenInput {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+.formButton {
+  width: 60%;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.8em 0.6em;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  margin: 0 auto;
+  background-color: #92b0ec;
+  color: white;
+  margin-top: 1em;
+}

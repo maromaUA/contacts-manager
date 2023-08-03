@@ -1,17 +1,18 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
+import { selectTheme, selectUser } from '../../redux/auth/selectors';
 import {
   logOutOperation,
-  changeSettingsOperation,
+  changeThemeOperation,
 } from '../../redux/auth/operations';
-import css from './Layout.module.css';
+import css from './Layout.module.scss';
 import { FaGear } from 'react-icons/fa6';
 import { BsDoorOpenFill } from 'react-icons/bs';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import { FaFolderOpen } from 'react-icons/fa';
+
+import Modal from '../../shared/components/modal/Modal';
+import ThemeSwitch from '../../shared/components/ThemeSwitch/ThemeSwitch';
+import SettingsForm from '../FormModals/SettingsForm';
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -20,8 +21,9 @@ const Layout = () => {
 
   const { REACT_APP_BACKEND_URL } = process.env;
 
-  const [avatar, setAvatar] = useState(null);
   const [open, setOpen] = useState(false);
+
+  const theme = useSelector(selectTheme);
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
@@ -29,73 +31,24 @@ const Layout = () => {
     dispatch(logOutOperation());
   };
 
-  const handleAvatarChange = e => {
-    setAvatar(e.target.files[0]);
-    console.log(e.target.files[0]);
-  };
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const result = await dispatch(changeSettingsOperation(data));
-    console.log(result);
+  const handleTheme = theme => {
+    console.log('theme:', theme);
+    dispatch(changeThemeOperation({ theme }));
   };
 
   return email ? (
-    <div classNameName={css.wrapper}>
-      <Modal
-        open={open}
-        onClose={onCloseModal}
-        center
-        classNameNames={{
-          overlay: css.customOverlay,
-          modal: css.customModal,
-        }}
-      >
-        <form className={css.formSettings} onSubmit={handleSubmit}>
-          <h2>Settings</h2>
+    <div
+      id="wrapper"
+      className={theme === 'light' ? css.wrapper : css.wrapperDark}
+      data-theme={theme}
+    >
+      {open && (
+        <Modal onClose={onCloseModal}>
+          <SettingsForm />
+        </Modal>
+      )}
 
-          <label>
-            <span className={css.inputDesc}>Name</span>
-            <input
-              className={css.modalInput}
-              type="text"
-              name="name"
-              placeholder="Name"
-              defaultValue={name}
-            />
-          </label>
-          <label className={css.inputFile}>
-            <FaFolderOpen size="30px" color="#92b0ec" />{' '}
-            <span>Change avatar</span>
-            <input
-              type="file"
-              onChange={handleAvatarChange}
-              accept="image/*"
-              name="avatar"
-              className={css.hiddenInput}
-            ></input>
-          </label>
-          <div className={css.radioStart}>
-            <label className="form-control">
-              <input type="radio" name="subscription" value="starter" />
-              Starter
-            </label>
-            <label className={css.radioPro}>
-              <input type="radio" name="subscription" value="pro" />
-              Pro
-            </label>
-            <label className={css.radioBusiness}>
-              <input type="radio" name="subscription" value="business" />
-              Business
-            </label>
-          </div>
-          <button className={css.formButton} type="submit">
-            Save
-          </button>
-        </form>
-      </Modal>
-
+      <ThemeSwitch handleTheme={handleTheme} />
       <ul className={css.header}>
         <li>
           <img
@@ -108,11 +61,6 @@ const Layout = () => {
             alt="avatar"
           ></img>
         </li>
-        {/*
-            <button type="button" onClick={handleUpload}>
-              Upload
-            </button> */}
-
         <li className={css.userInfo}>
           <p className={css.headerName}>{name}</p>
           <p

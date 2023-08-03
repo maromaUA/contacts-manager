@@ -1,6 +1,8 @@
 :root {
   --main-bg-color: linear-gradient(#92b0ec, #567995);
+  --dark-bg-color: rgb(20, 19, 19);
   --input-text-color-main: black;
+  --input-text-color-dark: white;
   --input-border-color-main: gray;
   --input-placeholder-color-main: rgba(3, 3, 3, 0.3);
   --form-background-main: white;
@@ -20,4 +22,36 @@
   //   --979CEA: #979cea;
   //   --7B7EDE: #7b7ede;
   //   --ECEDFD: #ecedfd;
+}
+#wrapper[data-theme='light'] {
+  --main-bg-color: linear-gradient(#92b0ec, #567995);
+  --layout-bg-color: white;
+  --input-text-color: black;
+  --input-border-color: gray;
+  --input-placeholder-color-main: rgba(3, 3, 3, 0.3);
+  --form-background-main: white;
+  --main-text-color: #617bb0;
+  --modal-bg-color: white;
+  --card-bg-color: white;
+  --card-text-color: black;
+  --add-button-bg-color: white;
+  --add-button-text-color: #617bb0;
+  --theme-switch-color: white;
+}
+
+#wrapper[data-theme='dark'] {
+  --main-bg-color: #1d2226;
+  --layout-bg-color: #1d2226;
+  --layout-border-color: white;
+  --input-text-color: white;
+  --input-border-color: #617bb0;
+  --input-placeholder-color-main: rgba(3, 3, 3, 0.3);
+  --form-background-main: white;
+  --main-text-color: #617bb0;
+  --modal-bg-color: #1d2226;
+  --card-bg-color: #3c4345;
+  --card-text-color: white;
+  --add-button-bg-color: #3c4345;
+  --add-buton-text-color: white;
+  --theme-switch-color: #3c4345;
 }

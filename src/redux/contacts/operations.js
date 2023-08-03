@@ -63,6 +63,7 @@ export const changeFavoriteOperation = createAsyncThunk(
   'contacts/favorite',
   async ({ id, body }, thunkAPI) => {
     try {
+      console.log(body);
       const { data } = await changeFavorite(id, body);
       return data;
     } catch (error) {

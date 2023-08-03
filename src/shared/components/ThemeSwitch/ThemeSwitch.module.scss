@@ -1,0 +1,55 @@
+.toggleLabel {
+  --width: 50px;
+  --height: calc(var(--width) / 2);
+  --border-radius: calc(var(--height) / 2);
+
+  display: inline-block;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 80px;
+  @media screen and (min-width: 750px) {
+    top: 15px;
+    right: 160px;
+  }
+  @media screen and (min-width: 1000px) {
+    top: 15px;
+    right: 240px;
+  }
+}
+
+.toggleInput {
+  display: none;
+}
+
+.toggleFill {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: #dddddd;
+  transition: background 0.2s;
+}
+
+.toggleInput:checked ~ .toggleFill {
+  // background: #009578;
+  // background: black;
+  background: #3c4345;
+}
+
+.toggleFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: var(--height);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--border-radius);
+  transition: transform 0.2s;
+}
+
+.toggleInput:checked ~ .toggleFill::after {
+  transform: translateX(var(--height));
+}

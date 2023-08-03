@@ -120,7 +120,33 @@ export const changeSettingsOperation = createAsyncThunk(
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
       // const res = await axios.patch('/users/avatars', data);
+
       const res = await axios.put('/users/settings', data);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changeThemeOperation = createAsyncThunk(
+  'auth/theme',
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      // If there is no token, exit without performing any request
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      // If there is a token, add it to the HTTP header and perform the request
+      setAuthHeader(persistedToken);
+      // const res = await axios.patch('/users/avatars', data);
+      console.log(data);
+      const res = await axios.patch('/users/theme', data);
+      console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

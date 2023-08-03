@@ -7,7 +7,7 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-size: 14px;
-  color: var(--input-text-color-main);
+  color: var(--input-text-color);
   outline: none;
 
   &::placeholder {
@@ -17,7 +17,7 @@
   &:focus,
   &:active {
     outline: none;
-    border: 1px solid black !important;
+    border: 1px solid black;
   }
 }
 
