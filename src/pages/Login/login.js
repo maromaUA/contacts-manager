@@ -3,7 +3,7 @@ import { logInOperation } from '../../redux/auth/operations';
 import css from './login.module.scss';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import { useState } from 'react';
 import Input from '../../shared/components/input/input';
 import Button from '../../shared/components/button/button';
