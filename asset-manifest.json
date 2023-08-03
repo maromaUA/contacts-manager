@@ -1,7 +1,16 @@
 {
   "files": {
-    "main.css": "/contacts-manager/static/css/main.515336d6.css",
-    "main.js": "/contacts-manager/static/js/main.2cb141f3.js",
+    "main.css": "/contacts-manager/static/css/main.152607f6.css",
+    "main.js": "/contacts-manager/static/js/main.79388e50.js",
+    "static/css/550.cd4f64ee.chunk.css": "/contacts-manager/static/css/550.cd4f64ee.chunk.css",
+    "static/js/550.8937de8c.chunk.js": "/contacts-manager/static/js/550.8937de8c.chunk.js",
+    "static/css/54.b08cdb87.chunk.css": "/contacts-manager/static/css/54.b08cdb87.chunk.css",
+    "static/js/54.084ad248.chunk.js": "/contacts-manager/static/js/54.084ad248.chunk.js",
+    "static/css/132.4047b106.chunk.css": "/contacts-manager/static/css/132.4047b106.chunk.css",
+    "static/js/132.18a6285b.chunk.js": "/contacts-manager/static/js/132.18a6285b.chunk.js",
+    "static/css/539.35a8a960.chunk.css": "/contacts-manager/static/css/539.35a8a960.chunk.css",
+    "static/js/539.548de3e0.chunk.js": "/contacts-manager/static/js/539.548de3e0.chunk.js",
+    "static/js/32.971056de.chunk.js": "/contacts-manager/static/js/32.971056de.chunk.js",
     "static/media/Poppins-Regular.woff": "/contacts-manager/static/media/Poppins-Regular.eb7f33fefaf7106ac3a0.woff",
     "static/media/Poppins-Medium.woff": "/contacts-manager/static/media/Poppins-Medium.9de653bb3161fcb43443.woff",
     "static/media/Poppins-SemiBold.woff": "/contacts-manager/static/media/Poppins-SemiBold.4b2ae28bc415edfe9fd6.woff",
@@ -9,11 +18,20 @@
     "static/media/Poppins-Medium.woff2": "/contacts-manager/static/media/Poppins-Medium.1bb2cc2b927e6590391c.woff2",
     "static/media/Poppins-SemiBold.woff2": "/contacts-manager/static/media/Poppins-SemiBold.e4258fa809f81555ab07.woff2",
     "index.html": "/contacts-manager/index.html",
-    "main.515336d6.css.map": "/contacts-manager/static/css/main.515336d6.css.map",
-    "main.2cb141f3.js.map": "/contacts-manager/static/js/main.2cb141f3.js.map"
+    "main.152607f6.css.map": "/contacts-manager/static/css/main.152607f6.css.map",
+    "main.79388e50.js.map": "/contacts-manager/static/js/main.79388e50.js.map",
+    "550.cd4f64ee.chunk.css.map": "/contacts-manager/static/css/550.cd4f64ee.chunk.css.map",
+    "550.8937de8c.chunk.js.map": "/contacts-manager/static/js/550.8937de8c.chunk.js.map",
+    "54.b08cdb87.chunk.css.map": "/contacts-manager/static/css/54.b08cdb87.chunk.css.map",
+    "54.084ad248.chunk.js.map": "/contacts-manager/static/js/54.084ad248.chunk.js.map",
+    "132.4047b106.chunk.css.map": "/contacts-manager/static/css/132.4047b106.chunk.css.map",
+    "132.18a6285b.chunk.js.map": "/contacts-manager/static/js/132.18a6285b.chunk.js.map",
+    "539.35a8a960.chunk.css.map": "/contacts-manager/static/css/539.35a8a960.chunk.css.map",
+    "539.548de3e0.chunk.js.map": "/contacts-manager/static/js/539.548de3e0.chunk.js.map",
+    "32.971056de.chunk.js.map": "/contacts-manager/static/js/32.971056de.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.515336d6.css",
-    "static/js/main.2cb141f3.js"
+    "static/css/main.152607f6.css",
+    "static/js/main.79388e50.js"
   ]
 }
