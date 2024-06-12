@@ -12,7 +12,7 @@ import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 const Homepage = lazy(() => import('../pages/HomePage/homepage'));
 const Registration = lazy(() => import('../pages/Registration/registration'));
 const Login = lazy(() => import('../pages/Login/login'));
-const ConfirmPage = lazy(() => import('../pages/ConfirmPage/confirmPage'));
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const App = () => {
 
         <Route path="*" element={<Navigate to={'/'} />} />
       </Route>
-      <Route path="/confirm" element={<ConfirmPage />}></Route>
+      
     </Routes>
   );
 };

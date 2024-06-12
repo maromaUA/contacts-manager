@@ -9,8 +9,8 @@ import { Formik, Form } from 'formik';
 import Input from '../../shared/components/input/input';
 
 import FormMessage from '../../shared/components/FormMessage/FormMessage';
-import Modal from '../../shared/components/modal/Modal';
-import ResendEmail from '../../components/FormModals/ResendEmailForm/ResendEmail';
+
+
 
 const RegistrSchema = Yup.object().shape({
   name: Yup.string().required('Required'),
@@ -30,8 +30,6 @@ const Registration = () => {
 
   const [open, setOpen] = useState(false);
 
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
 
   const onFormSubmit = async (credentials, { resetForm }) => {
     const { email, password, name } = credentials;
@@ -46,11 +44,7 @@ const Registration = () => {
 
   return (
     <div className={css.wrapper}>
-      {open && (
-        <Modal onClose={onCloseModal}>
-          <ResendEmail />
-        </Modal>
-      )}
+      
 
       <Formik
         initialValues={{
@@ -103,7 +97,7 @@ const Registration = () => {
 
             {info === 'ok' && (
               <FormMessage type={info}>
-                Check your email and confirm
+                You've registered. Now you can login
               </FormMessage>
             )}
             {info === 'fail' && (
@@ -119,12 +113,7 @@ const Registration = () => {
                 Sing in
               </Link>
             </p>
-            <p>
-              <span onClick={onOpenModal} className={css.formLink}>
-                Send
-              </span>{' '}
-              me confirm message again
-            </p>
+            
           </Form>
         )}
       </Formik>
